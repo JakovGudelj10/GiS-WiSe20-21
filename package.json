@@ -1,0 +1,21 @@
+{
+  "name": "jakovgudelj10",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Endabgabe.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakovGudelj10/GiS_WiSe20-21.git"
+  },
+  "author": "Jakov Gudelj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakovGudelj10/GiS_WiSe20-21/issues"
+  },
+  "homepage": "https://github.com/JakovGudelj10/GiS_WiSe20-21#readme"
+}
