@@ -1,0 +1,94 @@
+<section id="waffelbecher">
+
+            <h1 class="heading">Eis in der Waffel oder im Becher?</h1>
+    
+            <div class="auswahl">
+                <div class="behälter" id="Waffelauswahl">
+                    <img src="Waffel.jpg" height="200" width="150" alt="Eis in Waffel">
+                    <div class="hinzufuegen">
+                        <button class="addbehälter" >Waffel </button>
+                    </div>
+                </div>
+                <div class="behälter" id="Becherauswahl">                  
+                    <img src="Eisbecher.png" height="200" width="150" alt="Eis in Becher">
+                    <div class="hinzufuegen">
+                        <button class="addbehälter" >Becher </button>
+                    </div>
+                </div>
+            </div>
+    
+        </section>
+        <section id="Sorteundanzahl">
+
+            <h1 class="heading">Sorte auswählen (maximal 3)</h1>
+    
+            <div class="auswahl">
+                <div class="sorte">
+                    <img src="schokoladen.jpg" height="200" width="250" alt="Schokolade">
+                    <h4>Schokolade</h4>
+                    <p>+ 1.99€</p>
+                    <div class="hinzufuegen">
+                        <button class="addKugel" >+ 1 </button>
+                    </div>
+                </div>
+                <div class="sorte">
+                    <img src="Erdbeeren.jpg" height="200" width="250" alt="Erdbeere">
+                    <h4>Erdbeere</h4>
+                    <p>+ 1.99€</p>
+                    <div class="hinzufuegen">
+                        <button class="addKugel" eisindex="0">+ 1 </button>
+                    </div>
+                </div>
+                <div class="sorte">
+                    <img src="vanilleblüte.jpg" height="200" width="250" alt="Vanille">
+                    <h4>Vanille</h4>
+                    <p>+ 1.99€</p>
+                    <div class="hinzufuegen">
+                        <button class="addKugel" eisindex="0">+ 1 </button>
+                    </div>
+                </div>
+                <div class="sorte">
+                    <img src="Pistazien.jpg" height="200" width="250" alt="Pistazie">
+                    <h4>Pistazie</h4>
+                    <p>+ 1.99€</p>
+                    <div class="hinzufuegen">
+                        <button class="addKugel" eisindex="0">+ 1 </button>
+                    </div>
+                </div>
+            </div>
+    
+        </section>
+    
+        <section id="Toppings">
+
+            <h1 class="heading">diverse Toppings (maximal 2)</h1>
+    
+            <div class="auswahl">
+                <div class="extras">
+                    <img src="Schokososse.jpg"  height="200" width="250" alt="Schokosoße">
+                    <h3>Schokosoße</h3>
+                    <p>+ 1.00€</p>
+                    <div class="hinzufuegen">
+                        <button class="addExtra" extraindex="0">+ 1 </button>
+                    </div>
+                </div>
+    
+                <div class="extras">
+                    <img src="sahne.jpg"  height="200" width="250" alt="Sahne">
+                    <h3>Sahne</h3>
+                    <p>+ 1.00€</p>
+                    <div class="hinzufuegen">
+                        <button class="addExtra" extraindex="1">+ 1 </button>
+                    </div>
+                </div>
+    
+                <div class="extras">
+                    <img src="streussel.jpg"  height="200" width="250" alt="Bunte Streußel">
+                    <h3>Bunte Streußel</h3>
+                    <p>+ 1.00€</p>
+                    <div class="hinzufuegen">
+                        <button class="addExtra" extraindex="2">+ 1 </button>
+                    </div>
+                </div>
+            </div>
+        </section>

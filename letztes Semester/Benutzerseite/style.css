@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+header{
+    background-color:lightsteelblue;
+    font-size: 26px;
+}
+
+footer{
+    background-color:lightsteelblue;
+}
+
+body{
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    background-color: lightblue;
+}
+img
+{
+padding: 10px;
+background: #EEF3E2;
+border: 3px solid lightcoral;
+}
+button{
+    background-color: teal;
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 80px;
+}
+.kategorie{
+    text-align: center; 
+    justify-content: space-between;
+    display: inline-grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    width: 100%;
+    margin: auto 20px;
+    position: relative;
+    font-size: 20px;
+}
+
+.bild{
+    width: 200px;
+    height: 180px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+table{
+    position: fixed;
+    left: 70%;
+    z-index: 5;
+    background-color:  lightcoral;
+    width: auto;
+}
+
+@media screen and (max-width: 600px){
+    .body {
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 600px){
+    #auswahl {
+        width: 300px;
+        height: 450px;
+    }
+    image{ width: 30px;
+        height: 50px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1025px){
+    #auswahl {
+        width: 40%;
+        height: 400px;
+    }
+
+}

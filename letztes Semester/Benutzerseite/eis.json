@@ -1,0 +1,65 @@
+[
+    {
+        "_name": "Waffel",
+        "_preis": 0.29,
+        "_bild": "Waffel.jpg",
+        "_bildAlt": "Waffel",
+        "_kategorie": 0
+    },
+    {
+        "_name": "Eisbecher",
+        "_preis": 0.29,
+        "_bild": "Eisbecher.png",
+        "_bildAlt": "Eisbecher",
+        "_kategorie": 0
+    },
+    {
+        "_name": "Schokolade",
+        "_preis": 1.99,
+        "_bild": "Schokoladen.jpg",
+        "_bildAlt": "Schokolade",
+        "_kategorie": 1
+    },
+    {
+        "_name": "Erdbeere",
+        "_preis": 1.99,
+        "_bild": "Erdbeeren.jpg",
+        "_bildAlt": "Erbeere",
+        "_kategorie": 1
+    },
+    {
+        "_name": "Vanille",
+        "_preis": 1.99,
+        "_bild": "vanilleblüte.jpg",
+        "_bildAlt": "Vanille",
+        "_kategorie": 1
+    },
+    {
+        "_name": "Pistazie",
+        "_preis": 1.99,
+        "_bild": "Pistazien.jpg",
+        "_bildAlt": "Pistazie",
+        "_kategorie": 1
+    },
+    {
+        "_name": "Schokoladensoße",
+        "_preis": 1.00,
+        "_bild": "Schokososse.jpg",
+        "_bildAlt": "Schokosoße",
+        "_kategorie": 2
+    },
+    {
+        "_name": "Sahne",
+        "_preis": 1.00,
+        "_bild": "Sahne.jpg",
+        "_bildAlt": "Sahne",
+        "_kategorie": 2
+    },
+    {
+        "_name": "Streußel",
+        "_preis": 1.00,
+        "_bild": "streussel.jpg",
+        "_bildAlt": "Streussel",
+        "_kategorie": 2
+    }
+]

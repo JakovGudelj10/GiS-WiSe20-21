@@ -1,0 +1,21 @@
+{
+  "DBs": [
+    {
+      "name": "Endabgabe",
+      "collections": [
+        {
+          "name": "Bestellungen",
+          "documentstructure": {
+            "_id": "string"
+             "fname": "string",
+             "lname": "string",
+             "adress": "string",
+             "sorte": "string[]",
+             "toppings": "string[]",
+             "behaelter": "string"
+          }
+        }
+      ]
+    }
+  ]
+}
