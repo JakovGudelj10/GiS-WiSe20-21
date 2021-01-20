@@ -1,0 +1,10 @@
+[
+    {
+        "_name": "Actioncam",
+        "_preis": 10.0,
+        "_bild": "Actioncam.png",
+        "_bildAlt": "Actioncam",
+        "_beschreibung": "xyz...",
+        "_status": frei
+    }
+]
