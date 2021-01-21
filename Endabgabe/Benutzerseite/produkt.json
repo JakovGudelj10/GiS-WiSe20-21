@@ -4,7 +4,34 @@
         "_preis": 10.0,
         "_bild": "Actioncam.png",
         "_bildAlt": "Actioncam",
-        "_beschreibung": "xyz...",
+        "_beschreibung": "Eine wasserdichte 360 grad Kamera für alle Wetterverhältnisse.",
+        "_status": frei
+    },
+
+    {
+        "_name": "Biertische",
+        "_preis": 10.0,
+        "_bild": "Biertische.png",
+        "_bildAlt": "Biertische",
+        "_beschreibung": "",
+        "_status": frei
+    },
+
+    {
+        "_name": "Brettspiele",
+        "_preis": 10.0,
+        "_bild": "Brettspiele.png",
+        "_bildAlt": "Brettspiele",
+        "_beschreibung": "Ein paar Brettspiele für einen gemütlichen Spieleabend.",
+        "_status": frei
+    },
+
+    {
+        "_name": "Fussball",
+        "_preis": 10.0,
+        "_bild": "Fussball.png",
+        "_bildAlt": "Fussball",
+        "_beschreibung": "Perfekt zum Kicken oder ein Turnier.",
         "_status": frei
     }
 ]
