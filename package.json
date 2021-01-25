@@ -6,7 +6,9 @@
   "dependencies": {
     "mongodb": "^3.6.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/mongodb": "^3.6.3"
+  },
   "scripts": {
     "start": "node Aufgabe_09.js"
   },
