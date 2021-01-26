@@ -6,6 +6,7 @@ namespace Endabgabe {
         _bild: string;
         _bildAlt: string;
         _beschreibung: string;
+        _status: string;
     }
     export let produkt: Auswahl[];
 

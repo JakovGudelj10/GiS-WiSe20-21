@@ -49,7 +49,16 @@
         "_preis": 5.0,
         "_bild": "Handkehrset.png",
         "_bildAlt": "Handkehrset",
-        "_beschreibung": "Ein kleines Handkehrset falls mal ein Gals zerbricht oder man die WG sauber fegt.",
+        "_beschreibung": "Ein kleines Handkehrset falls mal ein Glas zerbricht oder man die WG sauber fegt.",
+        "_status": frei
+    },
+
+    {
+        "_name": "Kabeltrommel",
+        "_preis": 10.0,
+        "_bild": "Kabeltrommel.png",
+        "_bildAlt": "Kabeltrommel",
+        "_beschreibung": "Kabeltrommel mit 4 Anschlüssen.",
         "_status": frei
     },
 
@@ -58,7 +67,7 @@
         "_preis": 25.0,
         "_bild": "Lastenfahrrad.png",
         "_bildAlt": "Lastenfahrrad",
-        "_beschreibung": ".",
+        "_beschreibung": "Ohne Auto ein größeren Einkauf erledigen? Kein Problem mit dem Lastenfahrrad.",
         "_status": frei
     },
 
@@ -67,7 +76,26 @@
         "_preis": 20.0,
         "_bild": "Leinwand.png",
         "_bildAlt": "Leinwand",
-        "_beschreibung": ".",
+        "_beschreibung": "Für Projekte oder auch chillige Filmabende etc. falls ihr einen Beamer habt.",
         "_status": frei
     },
+
+    {
+        "_name": "Pfandmarken",
+        "_preis": 5.0,
+        "_bild": "Pfandmarken.png",
+        "_bildAlt": "Pfandmarken",
+        "_beschreibung": "Falls ihr eine Party veranstaltet bei der ihr Geld einnehmen wollt, könnten euch diese zu nutzen sein.",
+        "_status": frei
+    },
+
+    {
+        "_name": "SONY A7 II DIGITALKAMERA",
+        "_preis": 100.0,
+        "_bild": "Digitalkamera.png",
+        "_bildAlt": "Digitalkamera",
+        "_beschreibung": "SONY A7 II DIGITALKAMERA mit 24,3 Megapixel und leistungsstarken Hybrid-Autofokus.",
+        "_status": frei
+    }
+
 ]

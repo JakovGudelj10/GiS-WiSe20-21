@@ -1,7 +1,7 @@
 namespace Endabgabe {
 
     async function init(): Promise<void> {
-        await getJSON("eis.json");
+        await getJSON("produkt.json");
         buildpage();
         document.getElementById("senden")?.addEventListener("click", sendOrder);
         clearStorage();
@@ -13,13 +13,13 @@ namespace Endabgabe {
     async function getJSON(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
         let respJSON: string = await response.json();
-        eis = JSON.parse(JSON.stringify(respJSON));
-        console.log(eis);
+        produkt = JSON.parse(JSON.stringify(respJSON));
+        console.log(produkt);
     }
 
 
     function buildpage(): void {
-        let div: HTMLElement = document.getElementById("eis") as HTMLElement;
+        let div: HTMLElement = document.getElementById("produkt") as HTMLElement;
         let kategorie0: HTMLElement = document.createElement("div");
         let kategorie1: HTMLElement = document.createElement("div");
         let kategorie2: HTMLElement = document.createElement("div");
@@ -30,41 +30,41 @@ namespace Endabgabe {
         div.appendChild(kategorie1);
         div.appendChild(kategorie2);
 
-        for (let i: number = 0; i < eis.length; i++) {
+        for (let i: number = 0; i < produkt.length; i++) {
 
             let divArtikel: HTMLElement = document.createElement("div");
             divArtikel.setAttribute("class", "artikel");
-            if (eis[i]._kategorie == 0)
+            if (produkt[i]._kategorie == 0)
                 kategorie0.appendChild(divArtikel);
-            if (eis[i]._kategorie == 1)
+            if (produkt[i]._kategorie == 1)
                 kategorie1.appendChild(divArtikel);
-            if (eis[i]._kategorie == 2)
+            if (produkt[i]._kategorie == 2)
                 kategorie2.appendChild(divArtikel);
 
 
             let bild: HTMLElement = document.createElement("img");
             bild.setAttribute("class", "bild");
-            bild.setAttribute("src", eis[i]._bild);
-            bild.setAttribute("alt", eis[i]._bildAlt);
+            bild.setAttribute("src", produkt[i]._bild);
+            bild.setAttribute("alt", produkt[i]._bildAlt);
             divArtikel.appendChild(bild);
 
             let name: HTMLElement = document.createElement("h2");
-            name.innerHTML = eis[i]._name;
+            name.innerHTML = produkt[i]._name;
             divArtikel.appendChild(name);
 
             let preis: HTMLElement = document.createElement("p");
             preis.setAttribute("class", "preis");
-            preis.innerHTML = eis[i]._preis + " €";
+            preis.innerHTML = produkt[i]._preis + " €";
             divArtikel.appendChild(preis);
 
 
             let kaufen: HTMLButtonElement = document.createElement("button");
             kaufen.innerHTML = "Adden";
             kaufen.setAttribute("type", "button");
-            kaufen.setAttribute("artikelPreis", eis[i]._preis + "");
+            kaufen.setAttribute("artikelPreis", produkt[i]._preis + "");
             kaufen.setAttribute("index", i + "");
             kaufen.setAttribute("zähler", 0 + "");
-            kaufen.setAttribute("kategorie", eis[i]._kategorie + "");
+            kaufen.setAttribute("kategorie", produkt[i]._kategorie + "");
             kaufen.addEventListener("click", hinzufuegen);
             divArtikel.appendChild(kaufen);
 
@@ -82,29 +82,29 @@ namespace Endabgabe {
 
         switch (kategorie) {
             case "0": let behälterT: HTMLElement = <HTMLElement>document.getElementById("behälterT");
-                      behälterT.innerHTML = eis[index]._name;
-                      localStorage.setItem("behaelter", eis[index]._name);
+                      behälterT.innerHTML = produkt[index]._name;
+                      localStorage.setItem("behaelter", produkt[index]._name);
                       break;
             case "1": let sorteT: HTMLElement = <HTMLElement>document.getElementById("sorteT");
-                      sorteT.innerHTML += eis[index]._name + ", <br>";
+                      sorteT.innerHTML += produkt[index]._name + ", <br>";
                       if (localStorage.getItem("sorte")) {
                     let str: string = <string>localStorage.getItem("sorte");
-                    str += "&sorte=" + eis[index]._name;
+                    str += "&sorte=" + produkt[index]._name;
                     localStorage.setItem("sorte", str);
                 }
                 else {
-                    localStorage.setItem("sorte", eis[index]._name);
+                    localStorage.setItem("sorte", produkt[index]._name);
                 }
                       break;
             case "2": let toppingsT: HTMLElement = <HTMLElement>document.getElementById("toppingsT");
-                      toppingsT.innerHTML += eis[index]._name + ", <br>";
+                      toppingsT.innerHTML += produkt[index]._name + ", <br>";
                       if (localStorage.getItem("toppings")) {
                     let str: string = <string>localStorage.getItem("toppings");
-                    str += "&toppings=" + eis[index]._name;
+                    str += "&toppings=" + produkt[index]._name;
                     localStorage.setItem("toppings", str);
                 }
                 else {
-                    localStorage.setItem("toppings", eis[index]._name);
+                    localStorage.setItem("toppings", produkt[index]._name);
                 }
                       break;
         }
