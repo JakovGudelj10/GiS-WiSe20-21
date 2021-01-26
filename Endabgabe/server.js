@@ -12,15 +12,18 @@ var Endabgabe;
     if (!port)
         port = 8100;
     let server = Http.createServer();
-    server.addListener("request", handleRequest);
-    server.addListener("listening", handleListen);
-    server.listen(port);
-    connectToDatabase();
+    main();
+    async function main() {
+        server.addListener("request", handleRequest);
+        server.addListener("listening", handleListen);
+        server.listen(port);
+        orders = await connectToDatabase();
+    }
     function handleListen() {
         console.log("Listening");
     }
     function handleRequest(_request, _response) {
-        console.log("Hier ist der beste Ausleihshop der erxistiert!!!");
+        console.log("Hier ist der beste Ausleihshop der existiert!!!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
@@ -35,9 +38,10 @@ var Endabgabe;
                     break;
             }
         }
+        _response.end();
     }
     function send(_bestellung) {
-        orders.insert(_bestellung);
+        orders.insertOne(_bestellung);
     }
     async function connectToDatabase() {
         let url = "mongodb+srv://User:az17DLf9OfFRCOjw@gis-wise-2021-jakovgude.v5hg5.mongodb.net/AStA-Ausleihshop?retryWrites=true&w=majority";
@@ -46,6 +50,7 @@ var Endabgabe;
         await mongoClient.connect();
         orders = mongoClient.db("Endabgabe").collection("Bestellungen");
         console.log("Database connection", orders != undefined);
+        return orders;
     }
 })(Endabgabe = exports.Endabgabe || (exports.Endabgabe = {}));
 //# sourceMappingURL=server.js.map

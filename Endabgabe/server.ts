@@ -13,16 +13,19 @@ export namespace Endabgabe {
         port = 8100;
 
     let server: Http.Server = Http.createServer();
-    server.addListener("request", handleRequest);
-    server.addListener("listening", handleListen);
-    server.listen(port);
-    connectToDatabase();
+    main();
 
+    async function main(): Promise<void> {
+        server.addListener("request", handleRequest);
+        server.addListener("listening", handleListen);
+        server.listen(port);
+        orders = await connectToDatabase();
+    }
     function handleListen(): void {
         console.log("Listening");
     }
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
-        console.log("Hier ist der beste Ausleihshop der erxistiert!!!");
+        console.log("Hier ist der beste Ausleihshop der existiert!!!");
 
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -41,13 +44,14 @@ export namespace Endabgabe {
                     break;
             }
         }
+        _response.end();
 
     }
     function send(_bestellung: Bestellung): void {
-        orders.insert(_bestellung);
+        orders.insertOne(_bestellung);
     }
 
-    async function connectToDatabase(): Promise<void> {
+    async function connectToDatabase(): Promise<Mongo.Collection> {
         let url: string = "mongodb+srv://User:az17DLf9OfFRCOjw@gis-wise-2021-jakovgude.v5hg5.mongodb.net/AStA-Ausleihshop?retryWrites=true&w=majority";
 
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
@@ -55,6 +59,8 @@ export namespace Endabgabe {
         await mongoClient.connect();
         orders = mongoClient.db("Endabgabe").collection("Bestellungen");
         console.log("Database connection", orders != undefined);
+        return orders;
+
     }
 
 
