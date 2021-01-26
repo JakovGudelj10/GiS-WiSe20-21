@@ -2,8 +2,8 @@
 var Endabgabe;
 (function (Endabgabe) {
     async function init() {
-        await getJSON("produkt.json");
-        buildpage();
+        // await getJSON("produkt.json");
+        //buildpage();
         document.getElementById("senden")?.addEventListener("click", sendOrder);
         clearStorage();
     }
@@ -111,7 +111,8 @@ var Endabgabe;
             strng += "&" + storageKey + "=" + localStorage.getItem(storageKey);
         }
         console.log(query + strng);
-        await communicate("http://localhost:8100/senden?" + query + strng);
+        // await communicate("http://localhost:8100/senden?" + query + strng);
+        await communicate("https://testgiswise2021.herokuapp.com/senden?" + query + strng);
     }
     function clearStorage() {
         localStorage.clear();

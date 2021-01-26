@@ -10,7 +10,7 @@
     "@types/mongodb": "^3.6.3"
   },
   "scripts": {
-    "start": "node Aufgabe_09.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
