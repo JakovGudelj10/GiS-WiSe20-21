@@ -58,15 +58,15 @@ namespace Endabgabe {
             divArtikel.appendChild(preis);
 
 
-            let kaufen: HTMLButtonElement = document.createElement("button");
-            kaufen.innerHTML = "Adden";
-            kaufen.setAttribute("type", "button");
-            kaufen.setAttribute("artikelPreis", produkt[i]._preis + "");
-            kaufen.setAttribute("index", i + "");
-            kaufen.setAttribute("zähler", 0 + "");
-            kaufen.setAttribute("kategorie", produkt[i]._kategorie + "");
-            kaufen.addEventListener("click", hinzufuegen);
-            divArtikel.appendChild(kaufen);
+            let reservieren: HTMLButtonElement = document.createElement("button");
+            reservieren.innerHTML = "Adden";
+            reservieren.setAttribute("type", "button");
+            reservieren.setAttribute("artikelPreis", produkt[i]._preis + "");
+            reservieren.setAttribute("index", i + "");
+            reservieren.setAttribute("zähler", 0 + "");
+            reservieren.setAttribute("kategorie", produkt[i]._kategorie + "");
+            reservieren.addEventListener("click", hinzufuegen);
+            divArtikel.appendChild(reservieren);
 
         }
 

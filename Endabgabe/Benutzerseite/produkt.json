@@ -5,7 +5,7 @@
         "_bild": "Actioncam.png",
         "_bildAlt": "Actioncam",
         "_beschreibung": "Eine wasserdichte 360 grad Kamera für alle Wetterverhältnisse.",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -14,7 +14,7 @@
         "_bild": "Biertische.png",
         "_bildAlt": "Biertische",
         "_beschreibung": "",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -23,7 +23,7 @@
         "_bild": "Brettspiele.png",
         "_bildAlt": "Brettspiele",
         "_beschreibung": "Ein paar Brettspiele für einen gemütlichen Spieleabend.",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -32,7 +32,7 @@
         "_bild": "Fussball.png",
         "_bildAlt": "Fussball",
         "_beschreibung": "Perfekt zum Kicken oder ein Turnier.",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -41,7 +41,7 @@
         "_bild": "Grill.png",
         "_bildAlt": "Grill",
         "_beschreibung": "Für die kommende Jahreszeit das non plus Ultra.",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -50,7 +50,7 @@
         "_bild": "Handkehrset.png",
         "_bildAlt": "Handkehrset",
         "_beschreibung": "Ein kleines Handkehrset falls mal ein Glas zerbricht oder man die WG sauber fegt.",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -59,7 +59,7 @@
         "_bild": "Kabeltrommel.png",
         "_bildAlt": "Kabeltrommel",
         "_beschreibung": "Kabeltrommel mit 4 Anschlüssen.",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -68,7 +68,7 @@
         "_bild": "Lastenfahrrad.png",
         "_bildAlt": "Lastenfahrrad",
         "_beschreibung": "Ohne Auto ein größeren Einkauf erledigen? Kein Problem mit dem Lastenfahrrad.",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -77,7 +77,7 @@
         "_bild": "Leinwand.png",
         "_bildAlt": "Leinwand",
         "_beschreibung": "Für Projekte oder auch chillige Filmabende etc. falls ihr einen Beamer habt.",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -86,7 +86,7 @@
         "_bild": "Pfandmarken.png",
         "_bildAlt": "Pfandmarken",
         "_beschreibung": "Falls ihr eine Party veranstaltet bei der ihr Geld einnehmen wollt, könnten euch diese zu nutzen sein.",
-        "_status": frei
+        "_status": "frei"
     },
 
     {
@@ -95,7 +95,7 @@
         "_bild": "Digitalkamera.png",
         "_bildAlt": "Digitalkamera",
         "_beschreibung": "SONY A7 II DIGITALKAMERA mit 24,3 Megapixel und leistungsstarken Hybrid-Autofokus.",
-        "_status": frei
+        "_status": "frei"
     }
 
 ]

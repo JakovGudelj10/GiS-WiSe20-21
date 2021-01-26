@@ -47,15 +47,15 @@ var Endabgabe;
             preis.setAttribute("class", "preis");
             preis.innerHTML = Endabgabe.produkt[i]._preis + " €";
             divArtikel.appendChild(preis);
-            let kaufen = document.createElement("button");
-            kaufen.innerHTML = "Adden";
-            kaufen.setAttribute("type", "button");
-            kaufen.setAttribute("artikelPreis", Endabgabe.produkt[i]._preis + "");
-            kaufen.setAttribute("index", i + "");
-            kaufen.setAttribute("zähler", 0 + "");
-            kaufen.setAttribute("kategorie", Endabgabe.produkt[i]._kategorie + "");
-            kaufen.addEventListener("click", hinzufuegen);
-            divArtikel.appendChild(kaufen);
+            let reservieren = document.createElement("button");
+            reservieren.innerHTML = "Adden";
+            reservieren.setAttribute("type", "button");
+            reservieren.setAttribute("artikelPreis", Endabgabe.produkt[i]._preis + "");
+            reservieren.setAttribute("index", i + "");
+            reservieren.setAttribute("zähler", 0 + "");
+            reservieren.setAttribute("kategorie", Endabgabe.produkt[i]._kategorie + "");
+            reservieren.addEventListener("click", hinzufuegen);
+            divArtikel.appendChild(reservieren);
         }
     }
     function hinzufuegen(_event) {
