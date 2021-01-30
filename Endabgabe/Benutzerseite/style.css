@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ramabhadra&display=swap');
 
 header{
-    background-color: rgb(123, 179, 133);
+    background-color: #008a54;;
     font-size: 26px;
+    font-family: Ramabhadra;
 }
 
 footer{
@@ -11,16 +12,23 @@ footer{
 
 body{
     text-align: center;
-    background-color: rgb(123, 179, 133);
+    
+    font-family: Ramabhadra;
 }
-img
-{
-padding: 10px;
-background: #EEF3E2;
-border: 3px solid lightcoral;
-}
+img{
+    padding: 10px;
+    background: #EEF3E2;
+    border: 3px solid #008a54;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    display: block;
+    width: 300px;
+    }
+
+
 button{
-    background-color: teal;
+    background-color:#008a54;
     margin-bottom: 80px;
 }
 .kategorie{
