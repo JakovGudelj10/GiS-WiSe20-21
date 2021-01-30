@@ -1,7 +1,7 @@
 namespace Endabgabe {
 
     interface Product {
-        _id: string;
+        _id: number;
         _name: string;
         _preis: number;
         _bild: string;
@@ -9,6 +9,7 @@ namespace Endabgabe {
         _beschreibung: string;
         _status: string;
     }
+    
 
     async function init(): Promise<void> {
         await getProducts();
@@ -18,8 +19,8 @@ namespace Endabgabe {
     init();
 
     async function getProducts(): Promise<void> {
-        let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
-       // let response: Response = await communicate("http://localhost:8100/get");
+        //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
+        let response: Response = await communicate("http://localhost:8100/get");
         console.log(response.json());
         let products: Product[] = (JSON.parse(await response.text()));
         console.log(products);

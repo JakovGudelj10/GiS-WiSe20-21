@@ -6,8 +6,8 @@ var Endabgabe;
     }
     init();
     async function getProducts() {
-        let response = await communicate("https://testgiswise2021.herokuapp.com/get");
-        // let response: Response = await communicate("http://localhost:8100/get");
+        //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
+        let response = await communicate("http://localhost:8100/get");
         console.log(response.json());
         let products = (JSON.parse(await response.text()));
         console.log(products);

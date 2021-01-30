@@ -12,17 +12,18 @@ var Endabgabe;
     let port = Number(process.env.PORT);
     if (!port)
         port = 8100;
-    let server = Http.createServer();
-    main();
-    async function main() {
+    startServer(port);
+    connectToDatabase();
+    function startServer(_port) {
+        let server = Http.createServer();
+        console.log("Starting server");
         server.addListener("request", handleRequest);
-        server.addListener("listening", handleListen);
-        server.listen(port);
-        await connectToDatabase();
+        server.listen(_port);
+        console.log("Server ist gestartet und hört auf den port: " + _port);
     }
-    function handleListen() {
-        console.log("Listening");
-    }
+    //function handleListen(): void {
+    //  console.log("Listening");
+    //}
     function handleRequest(_request, _response) {
         console.log("Hier ist der beste Ausleihshop!!!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
@@ -45,15 +46,16 @@ var Endabgabe;
             }
         }
         _response.end();
+        console.log(_response);
     }
     function send(_bestellung) {
         orders.insertOne(_bestellung);
     }
     async function getProductinfo(_response) {
-        let ordersArray = await products.find().toArray();
-        _response.write(JSON.stringify(ordersArray));
-        console.log(ordersArray);
-        _response.end();
+        let productArray;
+        productArray = await products.find().toArray();
+        console.log(JSON.stringify(productArray[0]));
+        // _response.write(JSON.stringify(productArray));
     }
     async function connectToDatabase() {
         let url = "mongodb+srv://User:az17DLf9OfFRCOjw@gis-wise-2021-jakovgude.v5hg5.mongodb.net/AStA-Ausleihshop?retryWrites=true&w=majority";

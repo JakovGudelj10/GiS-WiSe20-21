@@ -17,18 +17,21 @@ export namespace Endabgabe {
     if (!port)
         port = 8100;
 
-    let server: Http.Server = Http.createServer();
-    main();
+    startServer(port);
+    connectToDatabase();
 
-    async function main(): Promise<void> {
+    function startServer(_port: number | string): void {
+        let server: Http.Server = Http.createServer();
+        console.log("Starting server");
+
         server.addListener("request", handleRequest);
-        server.addListener("listening", handleListen);
-        server.listen(port);
-        await connectToDatabase();
+        server.listen(_port);
+        console.log("Server ist gestartet und hört auf den port: " + _port);
     }
-    function handleListen(): void {
-        console.log("Listening");
-    }
+
+    //function handleListen(): void {
+    //  console.log("Listening");
+    //}
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log("Hier ist der beste Ausleihshop!!!");
 
@@ -57,18 +60,18 @@ export namespace Endabgabe {
             }
         }
         _response.end();
+        console.log(_response);
 
     }
     function send(_bestellung: Bestellung): void {
         orders.insertOne(_bestellung);
     }
     async function getProductinfo(_response: Http.ServerResponse): Promise<void> {
+        let productArray: Product[];
+        productArray = await products.find().toArray();
+        console.log(JSON.stringify(productArray[0]));
 
-        let ordersArray: Product[] = await products.find().toArray();
-        _response.write(JSON.stringify(ordersArray));
-        console.log(ordersArray);
-
-        _response.end();
+       // _response.write(JSON.stringify(productArray));
     }
 
     async function connectToDatabase(): Promise<void> {
@@ -78,7 +81,7 @@ export namespace Endabgabe {
         await mongoClient.connect();
         products = mongoClient.db("AStA-Ausleihshop").collection("Products");
         console.log("Database connection", products != undefined);
-    }
 
+    }
 
 }
