@@ -42,6 +42,9 @@ var Endabgabe;
                 case "/add":
                     addToReserved(url2);
                     break;
+                case "/getreserved":
+                    addToReserved(url2);
+                    break;
                 default:
                     break;
             }
@@ -49,6 +52,17 @@ var Endabgabe;
     }
     function send(_bestellung) {
         orders.insertOne(_bestellung);
+    }
+    async function getreservedProducts(_response, _url) {
+        let ids = _url.searchParams.get("ids");
+        let idArray = ids.split("$$");
+        idArray.forEach(e => {
+        });
+        let productArray;
+        productArray = await products.find().toArray();
+        console.log(JSON.stringify(productArray));
+        _response.write(JSON.stringify(productArray));
+        _response.end();
     }
     async function getProductinfo(_response) {
         let productArray;
@@ -59,7 +73,10 @@ var Endabgabe;
     }
     async function addToReserved(_url) {
         let id = _url.searchParams.get("id");
-        await products.updateOne({ _id: Mongo.ObjectId.bind(id) }, { $set: {
+        let objectId = new Mongo.ObjectId(id);
+        console.log(objectId);
+        await products.updateOne({ _id: objectId }, {
+            $set: {
                 _status: "reserviert"
             }
         });

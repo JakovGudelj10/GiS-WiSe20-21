@@ -36,6 +36,7 @@ var Endabgabe;
             kaufen.setAttribute("type", "button");
             kaufen.setAttribute("artikelId", e._id + "");
             //kaufen.setAttribute("index", i + "");
+            kaufen.setAttribute("preis", e._preis + "");
             kaufen.setAttribute("zähler", 0 + "");
             divArtikel.appendChild(kaufen);
             container.appendChild(divArtikel);
@@ -47,12 +48,38 @@ var Endabgabe;
             }
         });
     }
+    let knopf = document.getElementById("testbutton");
+    knopf.addEventListener("click", clearStorage);
+    function clearStorage() {
+        localStorage.clear();
+    }
     async function handleAdd(_event) {
         let ziel = _event.target;
-        let info = "?id=" + ziel.getAttribute("id");
+        let parent = ziel.parentElement;
+        let preiszaehler = document.getElementById("preiszaehler");
+        parent.setAttribute("class", "artikel notavailable");
+        ziel.setAttribute("class", "hidden");
+        let info = "" + ziel.getAttribute("artikelId");
         console.log(info);
-        //await communicate("https://testgiswise2021.herokuapp.com/add");
-        await communicate("http://localhost:8100/add" + info);
+        if (localStorage.length == 0) {
+            localStorage.setItem("query", info);
+            localStorage.setItem("preis", ziel.getAttribute("preis"));
+            preiszaehler.innerHTML = ziel.getAttribute("preis") + " €";
+        }
+        else {
+            let querystring = localStorage.getItem("query");
+            querystring += "$$" + info;
+            localStorage.setItem("query", querystring);
+            let preisstring = localStorage.getItem("preis");
+            let oldpreis = parseFloat(preisstring);
+            let newpreis = oldpreis + parseFloat(ziel.getAttribute("preis"));
+            preiszaehler.innerHTML = newpreis + " €";
+            localStorage.setItem("preis", newpreis + "");
+        }
+        console.log(localStorage.getItem("query"));
+        console.log(localStorage.getItem("preis"));
+        //await communicate("https://testgiswise2021.herokuapp.com/add?id=");
+        await communicate("http://localhost:8100/add?id=" + info);
     }
     async function communicate(_url) {
         let response = await fetch(_url);

@@ -58,6 +58,11 @@ export namespace Endabgabe {
                     addToReserved(url2);
                     break;
 
+                case "/getreserved":
+
+                    addToReserved(url2);
+                    break;
+
                 default:
                     break;
             }
@@ -67,6 +72,20 @@ export namespace Endabgabe {
 
     function send(_bestellung: Bestellung): void {
         orders.insertOne(_bestellung);
+    }
+
+    async function getreservedProducts(_response: Http.ServerResponse, _url: URL): Promise<void> {
+        let ids: string = _url.searchParams.get("ids");
+        let idArray: string[] = ids.split("$$");
+        idArray.forEach(e => {
+            
+
+        });
+        let productArray: Product[];
+        productArray = await products.find().toArray();
+        console.log(JSON.stringify(productArray));
+        _response.write(JSON.stringify(productArray));
+        _response.end();
     }
 
     async function getProductinfo(_response: Http.ServerResponse): Promise<void> {
@@ -79,16 +98,17 @@ export namespace Endabgabe {
 
     async function addToReserved(_url: URL): Promise<void> {
         let id: string = _url.searchParams.get("id");
+        let objectId: Mongo.ObjectId = new Mongo.ObjectId(id);
+        console.log(objectId);
         await products.updateOne(
-            { _id: Mongo.ObjectId.bind(id) },
-            { $set:
-               {
-                 _status: "reserviert"
-               }
+            { _id: objectId },
+            {
+                $set:
+                {
+                    _status: "reserviert"
+                }
             }
-         );
-
-
+        );
     }
 
     async function connectToDatabase(): Promise<void> {
