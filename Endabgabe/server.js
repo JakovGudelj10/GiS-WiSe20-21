@@ -37,6 +37,7 @@ var Endabgabe;
             switch (pfad) {
                 case "/senden":
                     send(url.query);
+                    _response.end();
                     break;
                 case "/get":
                     getProductinfo(_response);
@@ -45,8 +46,7 @@ var Endabgabe;
                     break;
             }
         }
-        _response.end();
-        console.log(_response);
+        //  console.log(_response);
     }
     function send(_bestellung) {
         orders.insertOne(_bestellung);
@@ -54,8 +54,9 @@ var Endabgabe;
     async function getProductinfo(_response) {
         let productArray;
         productArray = await products.find().toArray();
-        console.log(JSON.stringify(productArray[0]));
-        // _response.write(JSON.stringify(productArray));
+        console.log(JSON.stringify(productArray));
+        _response.write(JSON.stringify(productArray));
+        _response.end();
     }
     async function connectToDatabase() {
         let url = "mongodb+srv://User:az17DLf9OfFRCOjw@gis-wise-2021-jakovgude.v5hg5.mongodb.net/AStA-Ausleihshop?retryWrites=true&w=majority";

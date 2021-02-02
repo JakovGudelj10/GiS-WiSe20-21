@@ -8,8 +8,9 @@ var Endabgabe;
     async function getProducts() {
         //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
         let response = await communicate("http://localhost:8100/get");
-        console.log(response.json());
-        let products = (JSON.parse(await response.text()));
+        //console.log(await response.text());
+        let result = await response.text();
+        let products = (JSON.parse(result));
         console.log(products);
         products.forEach(e => {
             let container = document.getElementById("produkte");

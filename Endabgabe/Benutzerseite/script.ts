@@ -9,11 +9,10 @@ namespace Endabgabe {
         _beschreibung: string;
         _status: string;
     }
-    
+
 
     async function init(): Promise<void> {
         await getProducts();
-
     }
 
     init();
@@ -21,8 +20,9 @@ namespace Endabgabe {
     async function getProducts(): Promise<void> {
         //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
         let response: Response = await communicate("http://localhost:8100/get");
-        console.log(response.json());
-        let products: Product[] = (JSON.parse(await response.text()));
+        //console.log(await response.text());
+        let result: string = await response.text();
+        let products: Product[] = (JSON.parse(result));
         console.log(products);
         products.forEach(e => {
             let container: HTMLElement = document.getElementById("produkte");

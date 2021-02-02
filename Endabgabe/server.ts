@@ -29,9 +29,6 @@ export namespace Endabgabe {
         console.log("Server ist gestartet und hört auf den port: " + _port);
     }
 
-    //function handleListen(): void {
-    //  console.log("Listening");
-    //}
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log("Hier ist der beste Ausleihshop!!!");
 
@@ -50,6 +47,7 @@ export namespace Endabgabe {
             switch (pfad) {
                 case "/senden":
                     send(<Bestellung>url.query);
+                    _response.end();
                     break;
                 case "/get":
 
@@ -59,8 +57,6 @@ export namespace Endabgabe {
                     break;
             }
         }
-        _response.end();
-        console.log(_response);
 
     }
     function send(_bestellung: Bestellung): void {
@@ -69,9 +65,9 @@ export namespace Endabgabe {
     async function getProductinfo(_response: Http.ServerResponse): Promise<void> {
         let productArray: Product[];
         productArray = await products.find().toArray();
-        console.log(JSON.stringify(productArray[0]));
-
-       // _response.write(JSON.stringify(productArray));
+        console.log(JSON.stringify(productArray));
+        _response.write(JSON.stringify(productArray));
+        _response.end();
     }
 
     async function connectToDatabase(): Promise<void> {
