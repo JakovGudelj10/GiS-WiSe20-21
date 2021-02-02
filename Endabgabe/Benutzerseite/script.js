@@ -11,7 +11,6 @@ var Endabgabe;
         //console.log(await response.text());
         let result = await response.text();
         let products = (JSON.parse(result));
-        console.log(products);
         products.forEach(e => {
             let container = document.getElementById("produkte");
             let divArtikel = document.createElement("div");
@@ -24,20 +23,36 @@ var Endabgabe;
             let name = document.createElement("h2");
             name.innerHTML = e._name;
             divArtikel.appendChild(name);
+            let beschreibung = document.createElement("p");
+            beschreibung.setAttribute("class", "beschreibung");
+            beschreibung.innerHTML = e._beschreibung;
+            divArtikel.appendChild(beschreibung);
             let preis = document.createElement("p");
             preis.setAttribute("class", "preis");
             preis.innerHTML = e._preis + " €";
             divArtikel.appendChild(preis);
             let kaufen = document.createElement("button");
-            kaufen.innerHTML = "Adden";
+            kaufen.innerHTML = "Reservieren";
             kaufen.setAttribute("type", "button");
-            kaufen.setAttribute("artikelPreis", e._preis + "");
+            kaufen.setAttribute("artikelId", e._id + "");
             //kaufen.setAttribute("index", i + "");
             kaufen.setAttribute("zähler", 0 + "");
-            // kaufen.addEventListener("click", hinzufuegen);
             divArtikel.appendChild(kaufen);
             container.appendChild(divArtikel);
+            if (e._status == "reserviert" || e._status == "ausgeliehen") {
+                divArtikel.setAttribute("class", "artikel notavailable");
+            }
+            else {
+                kaufen.addEventListener("click", handleAdd);
+            }
         });
+    }
+    async function handleAdd(_event) {
+        let ziel = _event.target;
+        let info = "?id=" + ziel.getAttribute("id");
+        console.log(info);
+        //await communicate("https://testgiswise2021.herokuapp.com/add");
+        await communicate("http://localhost:8100/add" + info);
     }
     async function communicate(_url) {
         let response = await fetch(_url);

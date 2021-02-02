@@ -21,9 +21,6 @@ var Endabgabe;
         server.listen(_port);
         console.log("Server ist gestartet und hört auf den port: " + _port);
     }
-    //function handleListen(): void {
-    //  console.log("Listening");
-    //}
     function handleRequest(_request, _response) {
         console.log("Hier ist der beste Ausleihshop!!!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
@@ -42,11 +39,13 @@ var Endabgabe;
                 case "/get":
                     getProductinfo(_response);
                     break;
+                case "/add":
+                    addToReserved(url2);
+                    break;
                 default:
                     break;
             }
         }
-        //  console.log(_response);
     }
     function send(_bestellung) {
         orders.insertOne(_bestellung);
@@ -57,6 +56,13 @@ var Endabgabe;
         console.log(JSON.stringify(productArray));
         _response.write(JSON.stringify(productArray));
         _response.end();
+    }
+    async function addToReserved(_url) {
+        let id = _url.searchParams.get("id");
+        await products.updateOne({ _id: Mongo.ObjectId.bind(id) }, { $set: {
+                _status: "reserviert"
+            }
+        });
     }
     async function connectToDatabase() {
         let url = "mongodb+srv://User:az17DLf9OfFRCOjw@gis-wise-2021-jakovgude.v5hg5.mongodb.net/AStA-Ausleihshop?retryWrites=true&w=majority";

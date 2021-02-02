@@ -23,7 +23,6 @@ namespace Endabgabe {
         //console.log(await response.text());
         let result: string = await response.text();
         let products: Product[] = (JSON.parse(result));
-        console.log(products);
         products.forEach(e => {
             let container: HTMLElement = document.getElementById("produkte");
             let divArtikel: HTMLElement = document.createElement("div");
@@ -50,16 +49,33 @@ namespace Endabgabe {
             divArtikel.appendChild(preis);
 
             let kaufen: HTMLButtonElement = document.createElement("button");
-            kaufen.innerHTML = "Adden";
+            kaufen.innerHTML = "Reservieren";
             kaufen.setAttribute("type", "button");
-            kaufen.setAttribute("artikelPreis", e._preis + "");
+            kaufen.setAttribute("artikelId", e._id + "");
             //kaufen.setAttribute("index", i + "");
             kaufen.setAttribute("zähler", 0 + "");
-            // kaufen.addEventListener("click", hinzufuegen);
             divArtikel.appendChild(kaufen);
             container.appendChild(divArtikel);
 
+            if (e._status == "reserviert" || e._status == "ausgeliehen") {
+                divArtikel.setAttribute("class", "artikel notavailable");
+
+            }
+            else {
+                kaufen.addEventListener("click", handleAdd);
+            }
+
         });
+    }
+    async function handleAdd(_event: Event): Promise<void> {
+        let ziel: HTMLButtonElement = <HTMLButtonElement> _event.target;
+        let info: string = "?id=" + ziel.getAttribute("id");
+        console.log(info);
+        //await communicate("https://testgiswise2021.herokuapp.com/add");
+        await communicate("http://localhost:8100/add" + info);
+        
+
+
     }
 
     async function communicate(_url: RequestInfo): Promise<Response> {

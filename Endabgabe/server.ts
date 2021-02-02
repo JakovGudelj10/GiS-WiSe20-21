@@ -53,21 +53,42 @@ export namespace Endabgabe {
 
                     getProductinfo(_response);
                     break;
+                case "/add":
+
+                    addToReserved(url2);
+                    break;
+
                 default:
                     break;
             }
         }
 
     }
+
     function send(_bestellung: Bestellung): void {
         orders.insertOne(_bestellung);
     }
+
     async function getProductinfo(_response: Http.ServerResponse): Promise<void> {
         let productArray: Product[];
         productArray = await products.find().toArray();
         console.log(JSON.stringify(productArray));
         _response.write(JSON.stringify(productArray));
         _response.end();
+    }
+
+    async function addToReserved(_url: URL): Promise<void> {
+        let id: string = _url.searchParams.get("id");
+        await products.updateOne(
+            { _id: Mongo.ObjectId.bind(id) },
+            { $set:
+               {
+                 _status: "reserviert"
+               }
+            }
+         );
+
+
     }
 
     async function connectToDatabase(): Promise<void> {
@@ -77,7 +98,6 @@ export namespace Endabgabe {
         await mongoClient.connect();
         products = mongoClient.db("AStA-Ausleihshop").collection("Products");
         console.log("Database connection", products != undefined);
-
     }
 
 }
