@@ -2,9 +2,10 @@
 
 header{
     background-color: #008a54;;
-    font-size: 26px;
+    font-size: 27px;
     font-family: Ramabhadra;
-    
+    color: antiquewhite;
+    text-shadow: black;    
 }
 header img{
     padding: 10px;
@@ -12,10 +13,9 @@ header img{
     border: 3px solid #008a54;
     position: absolute;
     left: 30px;
-    top: 30px;
+    top: 65px;
     display: block;
     width: 300px;
-
 }
 
 footer{
@@ -27,25 +27,27 @@ body{
     font-family: Ramabhadra;
     font-size: 27px;
 }
+
 button{
+    font-family: Ramabhadra;
     background-color:#008a54;
     margin-bottom: 80px;
     size: 30px;
 }
+
 #produkte{
     text-align: center; 
     justify-content: space-between;
     display: inline-grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns:  25% 25% 25% 25%;
     width: 100%;
     margin: auto 20px;
     position: relative;
-    font-size: 23px;
-    
+    font-size: 20px;
 }
 
 .bild{
-    width: 200px;
+    width: 180px;
     height: 180px;
 }
 

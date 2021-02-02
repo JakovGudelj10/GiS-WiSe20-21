@@ -39,6 +39,11 @@ namespace Endabgabe {
             name.innerHTML = e._name;
             divArtikel.appendChild(name);
 
+            let beschreibung: HTMLElement = document.createElement("p");
+            beschreibung.setAttribute("class", "beschreibung");
+            beschreibung.innerHTML = e._beschreibung;
+            divArtikel.appendChild(beschreibung);
+
             let preis: HTMLElement = document.createElement("p");
             preis.setAttribute("class", "preis");
             preis.innerHTML = e._preis + " €";
