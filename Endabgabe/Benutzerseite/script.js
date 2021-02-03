@@ -52,8 +52,6 @@ var Endabgabe;
             }
         });
     }
-    let knopf = document.getElementById("testbutton");
-    knopf.addEventListener("click", clearStorage);
     function clearStorage() {
         localStorage.clear();
     }

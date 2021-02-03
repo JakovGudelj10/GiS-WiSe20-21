@@ -74,8 +74,7 @@ namespace Endabgabe {
 
         });
     }
-    let knopf: HTMLElement = document.getElementById("testbutton");
-    knopf.addEventListener("click", clearStorage);
+    
     function clearStorage(): void {
         localStorage.clear();
     }

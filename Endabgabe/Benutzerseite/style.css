@@ -22,6 +22,49 @@ footer{
     background-color: rgb(123, 179, 133);
 }
 
+a {
+    padding: 0.5rem;
+    background:#008a54;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    max-width: 200px;
+}
+
+a strong{
+    font-size: 0.8rem;
+    color: white;
+}
+
+.zaehlercontainer{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.zaehlercontainer div{
+    position: relative;
+    font-size: 25px;
+}
+
+.zaehlercontainer div::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    background-color: grey;   
+    left: 0;
+}
+
+.zaehlercontainer div::before{
+    content: "Kautionspreis: "; 
+}
+
 body{
     text-align: center;
     font-family: Ramabhadra;
@@ -78,5 +121,26 @@ div.artikel{
     visibility: hidden;
     opacity: 0;
 }
+@media screen and (min-width: 1026px) and (max-width: 1400px){
+    .artikelcontainer{
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
 
+}
 
+@media screen and (min-width: 701px) and (max-width: 1025px){
+    .artikelcontainer{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+}
+
+@media screen and (max-width: 700px){
+    .artikelcontainer{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+}
