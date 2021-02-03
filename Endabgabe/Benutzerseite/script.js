@@ -3,6 +3,7 @@ var Endabgabe;
 (function (Endabgabe) {
     async function init() {
         await getProducts();
+        clearStorage();
     }
     init();
     async function getProducts() {
@@ -13,11 +14,14 @@ var Endabgabe;
         let products = (JSON.parse(result));
         products.forEach(e => {
             let container = document.getElementById("produkte");
+            let artikelcontainer = document.createElement("div");
+            artikelcontainer.setAttribute("class", "artikelcontainer");
             let divArtikel = document.createElement("div");
+            artikelcontainer.appendChild(divArtikel);
             divArtikel.setAttribute("class", "artikel");
             let bild = document.createElement("img");
             bild.setAttribute("class", "bild");
-            bild.setAttribute("src", e._bild);
+            bild.setAttribute("src", "../images/" + e._bild);
             bild.setAttribute("alt", e._bildAlt);
             divArtikel.appendChild(bild);
             let name = document.createElement("h2");
@@ -39,7 +43,7 @@ var Endabgabe;
             kaufen.setAttribute("preis", e._preis + "");
             kaufen.setAttribute("zähler", 0 + "");
             divArtikel.appendChild(kaufen);
-            container.appendChild(divArtikel);
+            container.appendChild(artikelcontainer);
             if (e._status == "reserviert" || e._status == "ausgeliehen") {
                 divArtikel.setAttribute("class", "artikel notavailable");
             }
@@ -78,8 +82,6 @@ var Endabgabe;
         }
         console.log(localStorage.getItem("query"));
         console.log(localStorage.getItem("preis"));
-        //await communicate("https://testgiswise2021.herokuapp.com/add?id=");
-        await communicate("http://localhost:8100/add?id=" + info);
     }
     async function communicate(_url) {
         let response = await fetch(_url);

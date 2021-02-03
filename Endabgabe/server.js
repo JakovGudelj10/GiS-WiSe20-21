@@ -2,11 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Endabgabe = void 0;
 const Http = require("http");
-const Url = require("url");
 const Mongo = require("mongodb");
 var Endabgabe;
 (function (Endabgabe) {
-    let orders;
     let products;
     console.log("Starting server");
     let port = Number(process.env.PORT);
@@ -27,39 +25,42 @@ var Endabgabe;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         console.log(_request.url);
         if (_request.url) {
-            let url = Url.parse(_request.url, true);
-            let url2 = new URL(_request.url, `http://${_request.headers.host}`);
-            let pfad = url2.pathname;
+            let url = new URL(_request.url, `http://${_request.headers.host}`);
+            let pfad = url.pathname;
             console.log(pfad);
             switch (pfad) {
-                case "/senden":
-                    send(url.query);
-                    _response.end();
-                    break;
                 case "/get":
                     getProductinfo(_response);
                     break;
                 case "/add":
-                    addToReserved(url2);
+                    addToReserved(url);
                     break;
                 case "/getreserved":
-                    addToReserved(url2);
+                    getreservedProducts(_response, url);
+                    break;
+                case "/setlend":
+                    setLend(url);
+                    break;
+                case "/setfree":
+                    setFree(url);
                     break;
                 default:
                     break;
             }
         }
     }
-    function send(_bestellung) {
-        orders.insertOne(_bestellung);
-    }
     async function getreservedProducts(_response, _url) {
         let ids = _url.searchParams.get("ids");
         let idArray = ids.split("$$");
+        let objectArray = new Array;
+        let i = 0;
         idArray.forEach(e => {
+            let objectId = new Mongo.ObjectId(e);
+            objectArray[i] = objectId;
+            i++;
         });
         let productArray;
-        productArray = await products.find().toArray();
+        productArray = await products.find({ _id: { $in: objectArray } }).toArray();
         console.log(JSON.stringify(productArray));
         _response.write(JSON.stringify(productArray));
         _response.end();
@@ -73,11 +74,37 @@ var Endabgabe;
     }
     async function addToReserved(_url) {
         let id = _url.searchParams.get("id");
+        let fname = _url.searchParams.get("fname");
+        let lname = _url.searchParams.get("lname");
         let objectId = new Mongo.ObjectId(id);
         console.log(objectId);
         await products.updateOne({ _id: objectId }, {
             $set: {
-                _status: "reserviert"
+                _status: "reserviert",
+                _fname: fname,
+                _lname: lname
+            }
+        });
+    }
+    async function setLend(_url) {
+        let id = _url.searchParams.get("id");
+        let objectId = new Mongo.ObjectId(id);
+        console.log(objectId);
+        await products.updateOne({ _id: objectId }, {
+            $set: {
+                _status: "ausgeliehen"
+            }
+        });
+    }
+    async function setFree(_url) {
+        let id = _url.searchParams.get("id");
+        let objectId = new Mongo.ObjectId(id);
+        console.log(objectId);
+        await products.updateOne({ _id: objectId }, {
+            $set: {
+                _status: "frei",
+                _fname: "",
+                _lname: ""
             }
         });
     }

@@ -8,11 +8,14 @@ namespace Endabgabe {
         _bildAlt: string;
         _beschreibung: string;
         _status: string;
+        _fname: string;
+        _lname: string;
     }
 
 
     async function init(): Promise<void> {
         await getProducts();
+        clearStorage();
     }
 
     init();
@@ -25,12 +28,15 @@ namespace Endabgabe {
         let products: Product[] = (JSON.parse(result));
         products.forEach(e => {
             let container: HTMLElement = document.getElementById("produkte");
+            let artikelcontainer: HTMLElement = document.createElement("div");
+            artikelcontainer.setAttribute("class", "artikelcontainer");
             let divArtikel: HTMLElement = document.createElement("div");
+            artikelcontainer.appendChild(divArtikel);
             divArtikel.setAttribute("class", "artikel");
 
             let bild: HTMLElement = document.createElement("img");
             bild.setAttribute("class", "bild");
-            bild.setAttribute("src", e._bild);
+            bild.setAttribute("src", "../images/" + e._bild);
             bild.setAttribute("alt", e._bildAlt);
             divArtikel.appendChild(bild);
 
@@ -56,7 +62,7 @@ namespace Endabgabe {
             kaufen.setAttribute("preis", e._preis + "");
             kaufen.setAttribute("zähler", 0 + "");
             divArtikel.appendChild(kaufen);
-            container.appendChild(divArtikel);
+            container.appendChild(artikelcontainer);
 
             if (e._status == "reserviert" || e._status == "ausgeliehen") {
                 divArtikel.setAttribute("class", "artikel notavailable");
@@ -101,9 +107,6 @@ namespace Endabgabe {
         }
         console.log(localStorage.getItem("query"));
         console.log(localStorage.getItem("preis"));
-
-        //await communicate("https://testgiswise2021.herokuapp.com/add?id=");
-        await communicate("http://localhost:8100/add?id=" + info);
         
     }
 
