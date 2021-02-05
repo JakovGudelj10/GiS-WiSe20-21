@@ -144,3 +144,10 @@ div.artikel{
     }
 
 }
+
+@media screen and (max-width: 1510px){
+    header img{
+        display: none;
+    }
+
+}
