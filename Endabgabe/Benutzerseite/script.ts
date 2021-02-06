@@ -23,7 +23,6 @@ namespace Endabgabe {
     async function getProducts(): Promise<void> {
         //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
         let response: Response = await communicate("http://localhost:8100/get");
-        //console.log(await response.text());
         let result: string = await response.text();
         let products: Product[] = (JSON.parse(result));
         products.forEach(e => {
@@ -58,7 +57,6 @@ namespace Endabgabe {
             kaufen.innerHTML = "Reservieren";
             kaufen.setAttribute("type", "button");
             kaufen.setAttribute("artikelId", e._id + "");
-            //kaufen.setAttribute("index", i + "");
             kaufen.setAttribute("preis", e._preis + "");
             kaufen.setAttribute("zähler", 0 + "");
             divArtikel.appendChild(kaufen);

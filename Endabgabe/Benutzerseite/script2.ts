@@ -48,7 +48,6 @@ namespace Reservierungsseite {
         let query: string = localStorage.getItem("query");
         //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/getreserved?ids=" + query);
         let response: Response = await communicate("http://localhost:8100/getreserved?ids=" + query);
-        //console.log(await response.text());
         let result: string = await response.text();
         let products: Product[] = (JSON.parse(result));
         products.forEach(e => {

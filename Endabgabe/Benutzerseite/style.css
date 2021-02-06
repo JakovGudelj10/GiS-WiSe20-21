@@ -18,10 +18,6 @@ header img{
     width: 300px;
 }
 
-footer{
-    background-color: rgb(123, 179, 133);
-}
-
 a {
     padding: 0.5rem;
     background:#008a54;
@@ -31,6 +27,7 @@ a {
     align-items: center;
     border-radius: 2px;
     max-width: 200px;
+    color: white;
 }
 
 a strong{
@@ -57,7 +54,7 @@ a strong{
     width: 100%;
     height: 1px;
     bottom: 0;
-    background-color: grey;   
+    background-color:black;   
     left: 0;
 }
 
