@@ -20,8 +20,8 @@ namespace Betreiberseite {
     init();
 
     async function getProducts(): Promise<void> {
-        //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
-        let response: Response = await communicate("http://localhost:8100/get");
+        let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
+        //let response: Response = await communicate("http://localhost:8100/get");
         //console.log(await response.text());
         let result: string = await response.text();
         let products: Product[] = (JSON.parse(result));
@@ -98,12 +98,12 @@ namespace Betreiberseite {
         let id: string = "" + ziel.getAttribute("artikelId");
         let status: string = "" + ziel.getAttribute("status");
         if (status == "reserviert") {
-            //await communicate("https://testgiswise2021.herokuapp.com/setlend?id=" + id);
-            await communicate("http://localhost:8100/setlend?id=" + id);
+            await communicate("https://testgiswise2021.herokuapp.com/setlend?id=" + id);
+            //await communicate("http://localhost:8100/setlend?id=" + id);
         }
         else {
-            //await communicate("https://testgiswise2021.herokuapp.com/setfree?id=" + id);
-            await communicate("http://localhost:8100/setfree?id=" + id);
+            await communicate("https://testgiswise2021.herokuapp.com/setfree?id=" + id);
+            //await communicate("http://localhost:8100/setfree?id=" + id);
         }
         window.location.reload();
     }

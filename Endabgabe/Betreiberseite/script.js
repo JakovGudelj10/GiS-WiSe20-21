@@ -6,8 +6,8 @@ var Betreiberseite;
     }
     init();
     async function getProducts() {
-        //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
-        let response = await communicate("http://localhost:8100/get");
+        let response = await communicate("https://testgiswise2021.herokuapp.com/get");
+        //let response: Response = await communicate("http://localhost:8100/get");
         //console.log(await response.text());
         let result = await response.text();
         let products = (JSON.parse(result));
@@ -72,12 +72,12 @@ var Betreiberseite;
         let id = "" + ziel.getAttribute("artikelId");
         let status = "" + ziel.getAttribute("status");
         if (status == "reserviert") {
-            //await communicate("https://testgiswise2021.herokuapp.com/setlend?id=" + id);
-            await communicate("http://localhost:8100/setlend?id=" + id);
+            await communicate("https://testgiswise2021.herokuapp.com/setlend?id=" + id);
+            //await communicate("http://localhost:8100/setlend?id=" + id);
         }
         else {
-            //await communicate("https://testgiswise2021.herokuapp.com/setfree?id=" + id);
-            await communicate("http://localhost:8100/setfree?id=" + id);
+            await communicate("https://testgiswise2021.herokuapp.com/setfree?id=" + id);
+            //await communicate("http://localhost:8100/setfree?id=" + id);
         }
         window.location.reload();
     }

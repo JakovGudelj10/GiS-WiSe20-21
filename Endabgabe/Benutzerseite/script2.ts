@@ -39,15 +39,15 @@ namespace Reservierungsseite {
     }
 
     async function sendId(id: string, query: string): Promise<void> {
-        //await communicate("https://testgiswise2021.herokuapp.com/add?id=" + id + "&" + query);
-        await communicate("http://localhost:8100/add?id=" + id + "&" + query);                 
+        await communicate("https://testgiswise2021.herokuapp.com/add?id=" + id + "&" + query);
+        //await communicate("http://localhost:8100/add?id=" + id + "&" + query);                 
     }
 
 
     async function getProducts(): Promise<void> {
         let query: string = localStorage.getItem("query");
-        //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/getreserved?ids=" + query);
-        let response: Response = await communicate("http://localhost:8100/getreserved?ids=" + query);
+        let response: Response = await communicate("https://testgiswise2021.herokuapp.com/getreserved?ids=" + query);
+        //let response: Response = await communicate("http://localhost:8100/getreserved?ids=" + query);
         let result: string = await response.text();
         let products: Product[] = (JSON.parse(result));
         products.forEach(e => {

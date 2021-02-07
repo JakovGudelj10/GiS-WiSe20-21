@@ -23,14 +23,13 @@ var Reservierungsseite;
         window.location.reload();
     }
     async function sendId(id, query) {
-        //await communicate("https://testgiswise2021.herokuapp.com/add?id=" + id + "&" + query);
-        await communicate("http://localhost:8100/add?id=" + id + "&" + query);
+        await communicate("https://testgiswise2021.herokuapp.com/add?id=" + id + "&" + query);
+        //await communicate("http://localhost:8100/add?id=" + id + "&" + query);                 
     }
     async function getProducts() {
         let query = localStorage.getItem("query");
-        //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/getreserved?ids=" + query);
-        let response = await communicate("http://localhost:8100/getreserved?ids=" + query);
-        //console.log(await response.text());
+        let response = await communicate("https://testgiswise2021.herokuapp.com/getreserved?ids=" + query);
+        //let response: Response = await communicate("http://localhost:8100/getreserved?ids=" + query);
         let result = await response.text();
         let products = (JSON.parse(result));
         products.forEach(e => {

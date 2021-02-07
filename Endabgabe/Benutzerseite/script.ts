@@ -21,8 +21,8 @@ namespace Endabgabe {
     init();
 
     async function getProducts(): Promise<void> {
-        //let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
-        let response: Response = await communicate("http://localhost:8100/get");
+        let response: Response = await communicate("https://testgiswise2021.herokuapp.com/get");
+        //let response: Response = await communicate("http://localhost:8100/get");
         let result: string = await response.text();
         let products: Product[] = (JSON.parse(result));
         products.forEach(e => {
